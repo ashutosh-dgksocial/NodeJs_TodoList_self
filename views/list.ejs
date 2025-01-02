@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <style>
+      ul li {
+        list-style-type: decimal-leading-zero;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <h1>My To-Do List</h1>
+
+    <!-- for adding data in the todolist -->
+    <form action="/" method="POST">
+      <input type="text" name="newItem" placeholder="Add a new task" required />
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- List -->
+    <ul>
+      <% myItemArr.forEach(function(item, index) { %>
+      <li>
+        <%= item %>
+        <!-- Add delete button with task index as identifier -->
+        <form action="/delete" method="POST" style="display: inline">
+          <input type="hidden" name="deleteId" value="<%= index %>" />
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
